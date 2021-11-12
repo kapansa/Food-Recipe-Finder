@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Recipe API</title>
+</head>
+
+<body>
+
+    <div class="title">
+        <h1>Find Your Favourite Recipe</h1>
+    </div>
+
+    <div class="search">
+        <form action="/search" method="POST">
+            <input type="text" placeholder="Search for your favourite Recipe..." name="recipe" required>
+            <% if (recipes.length===0){ %>
+                <input type="submit" placeholder="Search">
+                <% } else{ %>
+                    <a href="/" class="clear_search">Clear Search</a>
+                    <% } %>
+        </form>
+    </div>
+
+    <div class="recipes">
+
+        <% recipes.forEach((recipe, index)=> { %>
+            <div class="recipe">
+                <div class="recipe_image">
+                    <img src=<%=recipe.recipe.image %> alt="recipe_image">
+                </div>
+                <div class="ingredients">
+                    <h1>
+                        <%= recipe.recipe.label %>
+                    </h1>
+                    <p>
+                        <% recipe.recipe.ingredientLines.forEach((ingredient, index)=>{ %>
+                            <span>
+                                <%= ingredient %>...
+                            </span>
+                            <% }) %>
+                    </p>
+                </div>
+
+            </div>
+            <% }) %>
+
+    </div>
+
+    <% if (recipes.length !==0){ %>
+        <footer>
+            <p>Recipe API Copyright &copy; Samuel Kapansa</p>
+        </footer>
+        <% } %>
+
+</body>
+
+</html>
