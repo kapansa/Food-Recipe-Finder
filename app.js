@@ -16,8 +16,10 @@ app.get("/", (req, res) => {
 app.post("/search", (req, res) => {
 
     const query = req.body.recipe;
+    const app_key = "a9d48da080dbdffcf8d96935f188685b";
+    const app_id = "05540eeb";
 
-    const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=05540eeb&app_key=a9d48da080dbdffcf8d96935f188685b`;
+    const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${app_id}&app_key=${app_key}`;
     
     https.get(url, (result) => {
 
